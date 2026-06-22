@@ -1,0 +1,12 @@
+{
+  "generated_at_utc": "2026-09-10T07:34:11.546268+00:00",
+  "colmap_path": "/data4/src/shunsuke/MICCAI2026/CLiMB/workspace/expB04_realcv/colmap_gt",
+  "slam_path": "/data4/src/shunsuke/MICCAI2026/CLiMB/submit/v010_submaps/out_v103_smoke",
+  "per_experiment": {
+    "Seq_003_a": null
+  },
+  "per_sequence_mean": {
+    "Seq_003_a": null
+  },
+  "global_mean": {}
+}

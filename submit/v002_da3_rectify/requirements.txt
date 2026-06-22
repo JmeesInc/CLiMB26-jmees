@@ -1,0 +1,28 @@
+# Runtime deps for predict.py + the DA3 inference path.
+# Versions match the environment the 5.25 mm local CV was measured in
+# (../iMED/.venv), except torch/torchvision which are installed separately from
+# the cu128 index in the Dockerfile (RTX 5090 / sm_120).
+numpy==2.4.6
+# headless build: the container has no display and no libGL
+opencv-python-headless==4.13.0.92
+pillow==12.2.0
+einops==0.8.2
+safetensors==0.7.0
+huggingface-hub==1.18.0
+omegaconf==2.3.0
+
+# Pulled in unconditionally by `import depth_anything_3.api`, even though this
+# submission only uses the pose/depth path: addict (model configs), evo
+# (utils.pose_align), moviepy 1.x (utils.export.gs -- `moviepy.editor` was
+# removed in 2.x), trimesh (export.glb), plyfile/imageio/matplotlib/scipy/tqdm.
+# gsplat is NOT needed: its import is guarded by try/except ImportError.
+addict==2.4.0
+evo==1.36.5
+moviepy==1.0.3
+trimesh==4.12.2
+matplotlib==3.10.9
+plyfile==1.1.4
+imageio==2.37.3
+scipy==1.17.1
+tqdm==4.67.3
+requests==2.34.2

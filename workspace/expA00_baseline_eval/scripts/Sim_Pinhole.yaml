@@ -1,0 +1,59 @@
+%YAML:1.0
+
+System:
+  imageEndFile: ".png"
+  isC3VD: 0
+  initialTimeSecond: 0
+  initialTimeMinute: 0
+  finishTimeSecond: 0
+  finishTimeMinute: 0
+  initialNumberFrame: 0
+  finishNumberFrame: 0
+  loopClosing: 0
+  merging: 1
+
+#--------------------------------------------------------------------------------------------
+# Camera Parameters (EndoMapper Simulated_Sequences: calibration.txt, pinhole, 960x720)
+#--------------------------------------------------------------------------------------------
+Camera.type: "PinHole"
+Camera.fx: 472.64955100886374
+Camera.fy: 472.64955100886374
+Camera.cx: 479.5
+Camera.cy: 359.5
+# No lens distortion in the simulator
+Camera.k1: 0.0
+Camera.k2: 0.0
+Camera.p1: 0.0
+Camera.p2: 0.0
+Camera.k3: 0.0
+Camera.width: 960
+Camera.height: 720
+
+Camera.imageScale: 1.0
+Camera.fps: 30
+Camera.numFramesAvoid: 0
+Camera.RGB: 1
+
+#--------------------------------------------------------------------------------------------
+# ORB Parameters
+#--------------------------------------------------------------------------------------------
+ORBextractor.nFeatures: 4000
+ORBextractor.scaleFactor: 1.2
+ORBextractor.nLevels: 8
+ORBextractor.iniThFAST: 20
+ORBextractor.minThFAST: 7
+
+#--------------------------------------------------------------------------------------------
+# Viewer Parameters
+#--------------------------------------------------------------------------------------------
+Viewer.KeyFrameSize: 0.05
+Viewer.KeyFrameLineWidth: 1.0
+Viewer.GraphLineWidth: 0.9
+Viewer.PointSize: 2.0
+Viewer.CameraSize: 0.08
+Viewer.CameraLineWidth: 3.0
+Viewer.TrajectoryLineWidth: 5.0
+Viewer.ViewpointX: 0.0
+Viewer.ViewpointY: -0.7
+Viewer.ViewpointZ: -1.8
+Viewer.ViewpointF: 500.0

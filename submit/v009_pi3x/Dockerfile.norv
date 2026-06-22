@@ -1,0 +1,15 @@
+# v009a: the rotation-averaging ABLATION of v009.
+#
+# Same image, two environment variables. v009 (rotavg on, 160k px) reaches CV
+# rot 2.96; this one turns rotation averaging off and spends the freed runtime
+# on resolution instead (255k px), landing at CV ATE 3.80 / rot 5.12 -- nearly
+# the same ATE with 1.7x the rotation error.
+#
+# The pair is deliberate: on DA3 rotation averaging improved CV rot by 19% but
+# the improvement transferred badly to the leaderboard (CV 3.98 -> LB 6.04, a
+# 1.52x degradation) while its runtime cost pushed W_t to 1.06 and lost more
+# score than it gained. Submitting both isolates whether the much larger Pi3X
+# gain (-41%) actually survives the transfer, with W_t pinned to 1.0 on both
+# sides so the comparison is not confounded by the runtime weight.
+FROM climb-pi3x:v009
+ENV DA3_ROTAVG=0 PI3_PIXEL_LIMIT=255000

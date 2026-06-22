@@ -1,0 +1,16 @@
+# Test artifacts are ~550 MB and would be shipped to the daemon on every build.
+output/
+output_*/
+.test_input/
+.host_input/
+results_docker.json
+*.tar
+*.tar.gz
+
+# Not needed inside the image. Note this must NOT exclude
+# vendor/depth_anything_3_src/README.md: DA3's pyproject declares
+# `readme = "README.md"`, so pip install of the package fails without it.
+/README.md
+build.sh
+test.sh
+export.sh

@@ -1,0 +1,143 @@
+# ===== Data (symlink to shared storage / huge) =====
+/data
+/data/
+
+# ===== workspace/ : code + artifacts are interleaved here =====
+# Strategy: ignore EVERYTHING under workspace/, then whitelist only source/config files.
+# This keeps experiment code while dropping checkpoints, datasets, big JSONs, downloads, etc.
+workspace/**
+# allow git to descend into subdirs
+!workspace/**/
+# whitelist source / config / docs only
+!workspace/**/*.py
+!workspace/**/*.sh
+!workspace/**/*.yaml
+!workspace/**/*.yml
+!workspace/**/*.toml
+!workspace/**/*.cfg
+!workspace/**/*.ini
+!workspace/**/*.md
+!workspace/**/*.ipynb
+
+# ===== Generic experiment artifacts (top-level too) =====
+wandb/
+runs/
+outputs/
+output/
+results/
+preds/
+predictions/
+checkpoints/
+ckpt/
+ckpts/
+logs/
+log/
+tb_logs/
+tensorboard/
+cache/
+.cache/
+tmp/
+*.log
+
+# ===== Python env =====
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ===== Model weights (ship via scp, not git) =====
+*.pth
+*.pt
+*.ckpt
+*.safetensors
+*.onnx
+*.engine
+*.bin
+*.h5
+
+# ===== Vendored external repos / starter kits / large reference assets =====
+# (re-fetch from upstream or scp from the source machine)
+/reference/
+/reference_pe/
+
+# ===== Submission packages: keep our own scripts, drop vendored repos & artifacts =====
+submit/**/.git/
+submit/**/weights/
+submit/**/model/
+submit/**/vendor/
+submit/**/.test_input/
+submit/**/.host_input/
+# generic `output/` above does not cover suffixed test-output dirs
+submit/**/output_*/
+submit/**/results_docker.json
+submit/**/*.tar
+submit/**/*.tar.gz
+submit/**/*.zip
+
+# ===== Media / large binaries =====
+*.mp4
+*.avi
+*.mov
+*.gif
+*.ply
+*.pkl
+*.npy
+*.npz
+
+# ===== OS / editor =====
+.DS_Store
+*.swp
+
+# vendored nested git repo (VGGT-SLAM clone) — fetch separately
+workspace/expC00_vggtslam/repo
+
+# CLiMB leaderboard watcher artifacts
+workspace/tools/lb_snapshots/
+workspace/tools/lb_watch.log
+workspace/tools/cron.out
+workspace/tools/*.bak*
+
+# ===== Official challenge data (Synapse download, 1.1GB COLMAP GT) — not redistributable =====
+/official_data/
+
+# ===== Local container test outputs under submit/ =====
+submit/**/out_*/
+submit/**/out/
+
+# ===== LaTeX build artifacts (writeup/) =====
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+writeup/*.out
+# container test output trees / logs / result jsons under submit/ (artifacts, not code)
+submit/**/dock_*/
+submit/**/final_*/
+submit/**/logs_*.txt
+submit/**/results_docker*.json
+
+# vendored nested git repo (VGGT-Omega clone) — fetch separately
+workspace/expB10_vggtomega/repo
+
+# Our own trained LoRA adapters (11.8 MB each) are shipped in git
+!submit/v010_submaps/lora.pt
+!submit/v010_submaps/lora_mix.pt
+
+# ===== Working / agent-facing docs: local only, not part of the public repo =====
+/.claude/
+/CLAUDE.md
+/SETUP.md
+/claudeSummary.md
+/competition_DIRECTION.md
+/daily_reports/
+/myMemo.md
+/survey/
